@@ -20,7 +20,11 @@ declare module "storyblok-rich-text-react-renderer" {
     | "image"
     | "emoji"
     | "blok"
-    | "text";
+    | "text"
+    | "table"
+    | "table_row"
+    | "table_cell"
+    | "table_header";
 
   export type StoryblokRichtextMark =
     | "bold"
@@ -83,6 +87,10 @@ declare module "storyblok-rich-text-react-renderer" {
   export const NODE_BR = "hard_break";
   export const NODE_IMAGE = "image";
   export const NODE_EMOJI = "emoji";
+  export const NODE_TABLE = "table";
+  export const NODE_TABLE_ROW = "table_row";
+  export const NODE_TABLE_CELL = "table_cell";
+  export const NODE_TABLE_HEADER = "table_header";
 
   export const MARK_BOLD = "bold";
   export const MARK_ITALIC = "italic";
@@ -173,6 +181,22 @@ declare module "storyblok-rich-text-react-renderer" {
       [NODE_PARAGRAPH]?: (children: ReactNode) => JSX.Element | null;
       [NODE_QUOTE]?: (children: ReactNode) => JSX.Element | null;
       [NODE_UL]?: (children: ReactNode) => JSX.Element | null;
+      [NODE_TABLE]?: (
+        children: ReactNode,
+        props: { class?: string }
+      ) => JSX.Element | null;
+      [NODE_TABLE_ROW]?: (
+        children: ReactNode,
+        props: { class?: string }
+      ) => JSX.Element | null;
+      [NODE_TABLE_CELL]?: (
+        children: ReactNode,
+        props: { class?: string }
+      ) => JSX.Element | null;
+      [NODE_TABLE_HEADER]?: (
+        children: ReactNode,
+        props: { class?: string }
+      ) => JSX.Element | null;
     };
     defaultStringResolver?: (str: string) => JSX.Element;
     textResolver?: (str: string) => string;
