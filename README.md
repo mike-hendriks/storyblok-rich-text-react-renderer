@@ -159,6 +159,10 @@ Supported element types and their resolver function signatures are:
 - NODE_LI — `(children) => { ... }`
 - NODE_HR — `() => { ... }`
 - NODE_BR — `() => { ... }`
+- NODE_TABLE — `(children, { class }) => { ... }`
+- NODE_TABLE_ROW — `(children, { class }) => { ... }`
+- NODE_TABLE_CELL — `(children, { class }) => { ... }`
+- NODE_TABLE_HEADER — `(children, { class }) => { ... }`
 
 #### Example: Map image elements to custom React components
 
@@ -286,6 +290,10 @@ Default node resolvers:
 - NODE_LI — `<li> ... </li>`
 - NODE_HR — `<hr />`
 - NODE_BR — `<br />`
+- NODE_TABLE — `<table className> ... </table>`
+- NODE_TABLE_ROW — `<tr className> ... </tr>`
+- NODE_TABLE_CELL — `<td className> ... </td>`
+- NODE_TABLE_HEADER — `<th className> ... </th>`
 
 ## Changelog
 
@@ -303,3 +311,4 @@ Default node resolvers:
 - 2.8.0 — Add MARK_ANCHOR resolver
 - 2.9.0 - Add type definition for custom link attributes in MARK_LINK
 - 2.9.2 - Safer implementation of textStyleMarkResolver
+- 2.10.0 - Add table support with NODE_TABLE, NODE_TABLE_ROW, NODE_TABLE_CELL, and NODE_TABLE_HEADER resolvers
