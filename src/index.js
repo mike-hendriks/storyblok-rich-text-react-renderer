@@ -11,6 +11,10 @@ export const NODE_HR = 'horizontal_rule';
 export const NODE_BR = 'hard_break';
 export const NODE_IMAGE = 'image';
 export const NODE_EMOJI = 'emoji';
+export const NODE_TABLE = 'table';
+export const NODE_TABLE_ROW = 'table_row';
+export const NODE_TABLE_CELL = 'table_cell';
+export const NODE_TABLE_HEADER = 'table_header';
 
 export const MARK_BOLD = 'bold';
 export const MARK_ITALIC = 'italic';
@@ -177,6 +181,26 @@ const anchorMarkResolver = (children, attrs) => {
     return React.createElement('span', props, children);
 }
 
+const tableNodeResolver = (children, attrs) => {
+    const props = attrs ? { className: attrs.class } : {};
+    return React.createElement('table', props, children);
+};
+
+const tableRowNodeResolver = (children, attrs) => {
+    const props = attrs ? { className: attrs.class } : {};
+    return React.createElement('tr', props, children);
+};
+
+const tableCellNodeResolver = (children, attrs) => {
+    const props = attrs ? { className: attrs.class } : {};
+    return React.createElement('td', props, children);
+};
+
+const tableHeaderNodeResolver = (children, attrs) => {
+    const props = attrs ? { className: attrs.class } : {};
+    return React.createElement('th', props, children);
+};
+
 const defaultNodeResolvers = {
     [NODE_HEADING]: headingNodeResolver,
     [NODE_CODEBLOCK]: codeblockNodeResolver,
@@ -189,6 +213,10 @@ const defaultNodeResolvers = {
     [NODE_HR]: emptyNodeResolver('hr'),
     [NODE_BR]: emptyNodeResolver('br'),
     [NODE_EMOJI]: emojiNodeResolver,
+    [NODE_TABLE]: tableNodeResolver,
+    [NODE_TABLE_ROW]: tableRowNodeResolver,
+    [NODE_TABLE_CELL]: tableCellNodeResolver,
+    [NODE_TABLE_HEADER]: tableHeaderNodeResolver,
 };
 
 const defaultMarkResolvers = {
